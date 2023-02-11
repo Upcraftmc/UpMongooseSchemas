@@ -1,0 +1,16 @@
+# visual studio code
+.vscode/
+
+# npm
+node_modules/
+package-lock.json
+
+# packaging
+out/
+
+# project
+.env
+cache.json
+.ignore_watch/
+ecosystem.config.js
+.connection

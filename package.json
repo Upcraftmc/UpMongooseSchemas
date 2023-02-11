@@ -1,0 +1,37 @@
+{
+    "name": "upmongooseschemas",
+    "version": "0.0.1",
+    "description": "Mongoose Models for UpcraftMC",
+    "main": "index.js",
+    "dependencies": {
+        "mongoose": "^6.8.3",
+        "mongoose-autopopulate": "^0.17.1",
+        "mongoose-unique-validator": "^3.1.0",
+        "uuid": "^9.0.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "format": "npx prettier --write .",
+        "prettier": "npx prettier --write .",
+        "lint": "./node_modules/.bin/eslint .",
+        "licenseCheck": "license-check-and-add check -f ./licenseConfig.json",
+        "license": "license-check-and-add add -f ./licenseConfig.json"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/Upcraftmc/UpMongooseSchemas.git"
+    },
+    "author": "LuciferMorningstarDev",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/Upcraftmc/UpMongooseSchemas/issues"
+    },
+    "homepage": "https://github.com/Upcraftmc/UpMongooseSchemas#readme",
+    "devDependencies": {
+        "eslint": "^8.34.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "license-check-and-add": "^4.0.5",
+        "prettier": "^2.8.4"
+    }
+}
