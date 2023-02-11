@@ -33,7 +33,8 @@ const MinecraftStatsSchema = new mongoose.Schema(
         'survival-1_blocksDestroyed': { type: String, default: '0' },
         'survival-1_walkedDistance': { type: String, default: '0' },
         'survival-1_pvpKills': { type: String, default: '0' },
-        'survival-1_pveKills': { type: String, default: '0' }
+        'survival-1_pveKills': { type: String, default: '0' },
+        'survival-1_damageTaken': { type: String, default: '0' }
     },
     { collection: 'ups_player_stats' }
 );
