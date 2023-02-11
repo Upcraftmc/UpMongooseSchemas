@@ -17,10 +17,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const MinecraftIdentity = require('./src/MinecraftIdentity');
-const MinecraftStats = require('./src/MinecraftStats');
-
-module.exports = {
-    MinecraftIdentity,
-    MinecraftStats
-};
+module.exports.MinecraftPlayerOptions = require('./MinecraftPlayerOptions');
+module.exports.MinecraftNameHistory = require('./MinecraftNameHistory');
+module.exports.VerificationIdentity = require('./VerificationIdentity');
+module.exports.MinecraftStats = require('./MinecraftStats');
+module.exports.MinecraftIdentity = require('./MinecraftIdentity');

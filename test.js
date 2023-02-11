@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 const { readFileSync } = require('node:fs');
-const { MinecraftIdentity } = require('.');
+const { MinecraftIdentity } = require('./src');
 
-let connectionString = readFileSync('./.connection', 'utf8') || 'mongodb://localhost:27017';
-
-const uuid = 'a6a85419-f0d1-45f0-afa0-cb1396cfaa8f';
-const username = '_Lucifer_1234_';
+let connectionString = readFileSync('./data/.connection', 'utf8');
+let uuid = readFileSync('./data/.uuid', 'utf8');
+let username = readFileSync('./data/.username', 'utf8');
 
 //  setup debug
 mongoose.set('debug', true);
@@ -16,11 +15,23 @@ mongoose.set('strictQuery', false);
 (async () => {
     await mongoose.connect(connectionString.trim()).catch(console.error);
 
-    let identity = await MinecraftIdentity.findOne({ uuid });
-    let stats = await identity.stats();
+    let identity = await MinecraftIdentity.findOne({ uuid }).catch(console.error);
+    console.log('Identity: ', identity);
 
-    console.log(identity);
-    console.log(stats);
+    let identityNamed = await MinecraftIdentity.findOne({ username }).catch(console.error);
+    console.log('NamedIdentity: ', identityNamed);
+
+    let verify = await identity.getVerification().catch(console.error);
+    console.log('Verify: ', verify);
+
+    let stats = await identity.getStatistics().catch(console.error);
+    console.log('Stats: ', stats);
+
+    let options = await identity.getOptions().catch(console.error);
+    console.log('Options: ', options);
+
+    let names = await identity.getNameHistory().catch(console.error);
+    console.log('NameHistory: ', names);
 
     mongoose.disconnect();
 })();

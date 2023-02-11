@@ -19,25 +19,15 @@
 
 const mongoose = require('mongoose');
 
-const MinecraftStatsSchema = new mongoose.Schema(
+const VerificationIdentitySchema = new mongoose.Schema(
     {
         uuid: { type: String, unique: true, required: true, index: true },
-        createdAt: { type: String, required: true, default: '0' },
-        updatedAt: { type: String, required: true, default: '0' },
-        onlineMinutes: { type: String, default: '0' },
-        'survival-1_onlineMinutes': { type: String, default: '0' },
-        'survival-1_deathCount': { type: String, default: '0' },
-        'survival-1_lastDeath': { type: String, default: '0' },
-        'survival-1_messageCount': { type: String, default: '0' },
-        'survival-1_blocksPlaced': { type: String, default: '0' },
-        'survival-1_blocksDestroyed': { type: String, default: '0' },
-        'survival-1_walkedDistance': { type: String, default: '0' },
-        'survival-1_pvpKills': { type: String, default: '0' },
-        'survival-1_pveKills': { type: String, default: '0' }
+        did: { type: String, unique: true, required: true, index: true },
+        verified: { type: Boolean, required: true, default: false }
     },
-    { collection: 'ups_player_stats' }
+    { collection: 'upp_verify_identity' }
 );
 
-MinecraftStatsSchema.path('uuid');
+VerificationIdentitySchema.path('uuid');
 
-module.exports = mongoose.models.MinecraftStats || mongoose.model('MinecraftStats', MinecraftStatsSchema);
+module.exports = mongoose.models.VerificationIdentity || mongoose.model('VerificationIdentity', VerificationIdentitySchema);

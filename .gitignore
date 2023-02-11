@@ -13,4 +13,4 @@ out/
 cache.json
 .ignore_watch/
 ecosystem.config.js
-.connection
+data/

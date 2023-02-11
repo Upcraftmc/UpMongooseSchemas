@@ -1,8 +1,8 @@
 {
     "name": "upmongooseschemas",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Mongoose Models for UpcraftMC",
-    "main": "index.js",
+    "main": "./src/index.js",
     "dependencies": {
         "mongoose": "^6.8.3",
         "mongoose-autopopulate": "^0.17.1",

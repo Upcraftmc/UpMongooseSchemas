@@ -19,25 +19,16 @@
 
 const mongoose = require('mongoose');
 
-const MinecraftStatsSchema = new mongoose.Schema(
+const MinecraftNameHistorySchema = new mongoose.Schema(
     {
         uuid: { type: String, unique: true, required: true, index: true },
-        createdAt: { type: String, required: true, default: '0' },
-        updatedAt: { type: String, required: true, default: '0' },
-        onlineMinutes: { type: String, default: '0' },
-        'survival-1_onlineMinutes': { type: String, default: '0' },
-        'survival-1_deathCount': { type: String, default: '0' },
-        'survival-1_lastDeath': { type: String, default: '0' },
-        'survival-1_messageCount': { type: String, default: '0' },
-        'survival-1_blocksPlaced': { type: String, default: '0' },
-        'survival-1_blocksDestroyed': { type: String, default: '0' },
-        'survival-1_walkedDistance': { type: String, default: '0' },
-        'survival-1_pvpKills': { type: String, default: '0' },
-        'survival-1_pveKills': { type: String, default: '0' }
+        username: { type: String, required: true },
+        usedUntil: { type: Number, required: true, default: 0 },
+        knownSince: { type: Number, required: true, default: 0 }
     },
-    { collection: 'ups_player_stats' }
+    { collection: 'upp_user_name_history' }
 );
 
-MinecraftStatsSchema.path('uuid');
+MinecraftNameHistorySchema.path('uuid');
 
-module.exports = mongoose.models.MinecraftStats || mongoose.model('MinecraftStats', MinecraftStatsSchema);
+module.exports = mongoose.models.MinecraftNameHistory || mongoose.model('MinecraftNameHistory', MinecraftNameHistorySchema);

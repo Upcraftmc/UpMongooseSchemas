@@ -18,7 +18,8 @@
  */
 
 const mongoose = require('mongoose');
-const MinecraftStats = require('./MinecraftStats');
+
+const { MinecraftStats, VerificationIdentity, MinecraftNameHistory, MinecraftPlayerOptions } = require('.');
 
 const MinecraftIdentitySchema = new mongoose.Schema(
     {
@@ -32,9 +33,20 @@ const MinecraftIdentitySchema = new mongoose.Schema(
 
 MinecraftIdentitySchema.path('uuid');
 
-MinecraftIdentitySchema.methods.stats = async function () {
+MinecraftIdentitySchema.methods.getStatistics = async function () {
     return await MinecraftStats.findOne({ uuid: this.uuid });
 };
 
+MinecraftIdentitySchema.methods.getOptions = async function () {
+    return await MinecraftPlayerOptions.findOne({ uuid: this.uuid });
+};
+
+MinecraftIdentitySchema.methods.getVerification = async function () {
+    return await VerificationIdentity.findOne({ uuid: this.uuid });
+};
+
+MinecraftIdentitySchema.methods.getNameHistory = async function () {
+    return await MinecraftNameHistory.find({ uuid: this.uuid });
+};
+
 module.exports = mongoose.models.MinecraftIdentity || mongoose.model('MinecraftIdentity', MinecraftIdentitySchema);
-module.exports.MinecraftIdentitySchema = MinecraftIdentitySchema;
