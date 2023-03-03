@@ -25,6 +25,7 @@ const MinecraftStatsSchema = new mongoose.Schema(
         createdAt: { type: String, required: true, default: '0' },
         updatedAt: { type: String, required: true, default: '0' },
         onlineMinutes: { type: String, default: '0' },
+        'survival-1_lastJoin': { type: String, default: '0' },
         'survival-1_onlineMinutes': { type: String, default: '0' },
         'survival-1_deathCount': { type: String, default: '0' },
         'survival-1_lastDeath': { type: String, default: '0' },
