@@ -17,9 +17,23 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-module.exports.MinecraftPlayerOptions = require('./MinecraftPlayerOptions');
-module.exports.MinecraftNameHistory = require('./MinecraftNameHistory');
-module.exports.VerificationIdentity = require('./VerificationIdentity');
-module.exports.TeamApplication = require('./TeamApplication');
-module.exports.MinecraftStats = require('./MinecraftStats');
-module.exports.MinecraftIdentity = require('./MinecraftIdentity');
+const mongoose = require('mongoose');
+
+const TeamApplicationSchema = new mongoose.Schema(
+    {
+        guildId: { type: String, default: null, required: true },
+        userId: { type: String, default: null, required: true },
+        username: { type: String, default: null, required: true },
+        type: { type: String, default: 'supporter', required: true, enum: ['developer', 'builder', 'supporter', 'events', 'designer', 'content'] },
+        answers: [
+            {
+                type: Object,
+                title: { type: String, default: '', required: true },
+                value: { type: String, default: '', required: true }
+            }
+        ]
+    },
+    { collection: 'upb_application', timestamps: true }
+);
+
+module.exports = mongoose.models.TeamApplication || mongoose.model('TeamApplication', TeamApplicationSchema);
