@@ -17,10 +17,16 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-module.exports.MinecraftPlayerOptions = require('./MinecraftPlayerOptions');
-module.exports.MinecraftNameHistory = require('./MinecraftNameHistory');
-module.exports.VerificationIdentity = require('./VerificationIdentity');
-module.exports.TeamApplication = require('./TeamApplication');
-module.exports.UpEconomyData = require('./UpEconomyData');
-module.exports.MinecraftStats = require('./MinecraftStats');
-module.exports.MinecraftIdentity = require('./MinecraftIdentity');
+const mongoose = require('mongoose');
+
+const UpEconomyDataSchema = new mongoose.Schema(
+    {
+        uuid: { type: String, unique: true, required: true, index: true },
+        coins: { type: Number, required: true, default: 0 }
+    },
+    { collection: 'upp_user_economy' }
+);
+
+UpEconomyDataSchema.path('uuid');
+
+module.exports = mongoose.models.UpEconomyData || mongoose.model('UpEconomyData', UpEconomyDataSchema);

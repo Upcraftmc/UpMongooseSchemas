@@ -19,7 +19,7 @@
 
 const mongoose = require('mongoose');
 
-const { MinecraftStats, VerificationIdentity, MinecraftNameHistory, MinecraftPlayerOptions } = require('.');
+const { MinecraftStats, VerificationIdentity, MinecraftNameHistory, MinecraftPlayerOptions, UpEconomyData } = require('.');
 
 const MinecraftIdentitySchema = new mongoose.Schema(
     {
@@ -47,6 +47,10 @@ MinecraftIdentitySchema.methods.getVerification = async function () {
 
 MinecraftIdentitySchema.methods.getNameHistory = async function () {
     return await MinecraftNameHistory.find({ uuid: this.uuid });
+};
+
+MinecraftIdentitySchema.methods.getUpEconomyData = async function () {
+    return await UpEconomyData.find({ uuid: this.uuid });
 };
 
 module.exports = mongoose.models.MinecraftIdentity || mongoose.model('MinecraftIdentity', MinecraftIdentitySchema);
