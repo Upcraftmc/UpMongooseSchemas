@@ -1,6 +1,6 @@
 {
     "name": "upmongooseschemas",
-    "version": "0.0.7",
+    "version": "0.0.8",
     "description": "Mongoose Models for UpcraftMC",
     "main": "./src/index.js",
     "dependencies": {

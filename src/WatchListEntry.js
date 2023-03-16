@@ -23,7 +23,7 @@ const WatchListEntrySchema = new mongoose.Schema(
     {
         uuid: { type: String, unique: true, required: true, index: true },
         did: { type: String, unique: true, required: true, index: true },
-        reason: { type: Boolean, required: true, default: "Kein Grund angegeben." }
+        reason: { type: String, required: true, default: "Kein Grund angegeben." }
     },
     { collection: 'upp_watchlist' }
 );
