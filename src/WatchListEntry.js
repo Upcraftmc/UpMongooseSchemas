@@ -17,11 +17,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-module.exports.MinecraftPlayerOptions = require('./MinecraftPlayerOptions');
-module.exports.MinecraftNameHistory = require('./MinecraftNameHistory');
-module.exports.VerificationIdentity = require('./VerificationIdentity');
-module.exports.TeamApplication = require('./TeamApplication');
-module.exports.UpEconomyData = require('./UpEconomyData');
-module.exports.MinecraftStats = require('./MinecraftStats');
-module.exports.WatchListEntry = require('./WatchListEntry');
-module.exports.MinecraftIdentity = require('./MinecraftIdentity');
+const mongoose = require('mongoose');
+
+const WatchListEntrySchema = new mongoose.Schema(
+    {
+        uuid: { type: String, unique: true, required: true, index: true },
+        did: { type: String, unique: true, required: true, index: true },
+        reason: { type: Boolean, required: true, default: "Kein Grund angegeben." }
+    },
+    { collection: 'upp_watchlist' }
+);
+
+WatchListEntrySchema.path('uuid');
+
+module.exports = mongoose.models.WatchListEntry || mongoose.model('WatchListEntry', WatchListEntrySchema);
