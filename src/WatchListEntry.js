@@ -21,13 +21,14 @@ const mongoose = require('mongoose');
 
 const WatchListEntrySchema = new mongoose.Schema(
     {
-        uuid: { type: String, unique: true, required: true, index: true },
-        did: { type: String, unique: true, required: true, index: true },
+        uuid: { type: String, required: true, index: true },
+        did: { type: String, required: true, index: true },
         reason: { type: String, required: true, default: "Kein Grund angegeben." },
         messageId: { type: String, required: true, default: "" },
-        channelId: { type: String, required: true, default: "" }
+        channelId: { type: String, required: true, default: "" },
+        active: { type: Boolean, required: true, default: true }
     },
-    { collection: 'upp_watchlist' }
+    { collection: 'upp_watchlist', timestamps: true }
 );
 
 WatchListEntrySchema.path('uuid');
